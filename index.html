@@ -1,6 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineering Workflow - Piloto</title>
+    <!-- Importando o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 id="page-title">Carregando Projeto...</h1>
+        <p>Framework de Otimização de Janela de Contexto para Documentação Técnica</p>
+    </header>
+
+    <h2>Mapa do Sistema</h2>
+    <div class="sitemap" id="sitemap-container"></div>
+
+    <h2>Estratégias de Desacoplamento (Terceirização)</h2>
+    <div class="grid-layout" id="outsourcing-container"></div>
+
+    <h2>Workflow de Revisão via IA</h2>
+    <div class="grid-layout" id="workflow-container"></div>
+
+    <h2>Planejamento de Upgrade (Base: Registro_Mestre_Fontes_v0.4.csv)</h2>
+    <div class="grid-layout" id="upgrade-container"></div>
+
+    <h2>Recursos de Treinamento em Vídeo</h2>
+    <div class="grid-layout" id="training-container"></div>
+    <p class="disclaimer">As visualizações de vídeos do YouTube serão armazenadas em seu Histórico do YouTube, e seus dados serão armazenados e usados pelo YouTube de acordo com seus Termos de Serviço.</p>
+
+    <footer>
+        <p>Projeto Piloto: <strong>AI-Human Collaboration Framework</strong></p>
+        <p>Desenvolvido e mantido por: <span id="authors-list"></span></p>
+    </footer>
+</div>
+
+<!-- Lógica de importação do JSON -->
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // Função para buscar o JSON externo
         fetch('database.json')
             .then(response => {
                 if (!response.ok) {
@@ -9,11 +48,9 @@
                 return response.json();
             })
             .then(database => {
-                // Injeta Título e Autores
                 document.getElementById('page-title').innerText = database.projectInfo.title;
                 document.getElementById('authors-list').innerText = database.projectInfo.authors.join(' & ');
 
-                // Função auxiliar para renderizar os cards em grid
                 const renderGrid = (containerId, dataArray, htmlTemplate) => {
                     const container = document.getElementById(containerId);
                     dataArray.forEach(item => {
@@ -21,14 +58,12 @@
                     });
                 };
 
-                // Renderiza o Sitemap
                 const sitemapContainer = document.getElementById('sitemap-container');
                 database.siteMap.forEach(item => {
                     const badgeClass = item.status === 'ativo' ? 'badge-active' : 'badge-wip';
                     sitemapContainer.innerHTML += `<div class="sitemap-item">${item.name} <span class="badge ${badgeClass}">${item.status === 'ativo' ? 'Online' : 'Em elaboração'}</span></div>`;
                 });
 
-                // Renderiza Terceirização
                 renderGrid('outsourcing-container', database.outsourcingStrategies, (item) => `
                     <div class="card">
                         <h3>${item.title}</h3>
@@ -36,7 +71,6 @@
                     </div>
                 `);
 
-                // Renderiza Workflow
                 renderGrid('workflow-container', database.workflowSteps, (item) => `
                     <div class="card">
                         <h3>${item.title}</h3>
@@ -44,7 +78,6 @@
                     </div>
                 `);
 
-                // Renderiza Upgrade Roadmap
                 renderGrid('upgrade-container', database.upgradeRoadmap, (item) => `
                     <div class="card">
                         <h3>${item.phase}</h3>
@@ -53,7 +86,6 @@
                     </div>
                 `);
 
-                // Renderiza Treinamentos
                 renderGrid('training-container', database.trainingResources, (item) => `
                     <div class="card">
                         <h3>${item.title}</h3>
@@ -67,3 +99,6 @@
             });
     });
 </script>
+
+</body>
+</html>
