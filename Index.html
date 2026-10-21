@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineering Workflow - Piloto</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --badge-wip: #ffc107;
+            --badge-active: #28a745;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        /* Sitemap Styling */
+        .sitemap {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .sitemap-item {
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+        .badge {
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+            color: #000;
+        }
+        .badge-wip { background-color: var(--badge-wip); }
+        .badge-active { background-color: var(--badge-active); color: white; }
+        
+        /* Workflow Styling */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .step-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+        .step-card h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 id="page-title">Carregando Projeto...</h1>
+        <p>Framework de Otimização de Janela de Contexto para Documentação Técnica</p>
+    </header>
+
+    <h2>Mapa do Sistema (Em Expansão)</h2>
+    <div class="sitemap" id="sitemap-container">
+        <!-- Injetado via JS -->
+    </div>
+
+    <h2>Workflow de Revisão via IA (Linguagem Natural)</h2>
+    <div class="workflow-grid" id="workflow-container">
+        <!-- Injetado via JS -->
+    </div>
+
+    <footer>
+        <p>Projeto Piloto: <strong>AI-Human Collaboration Framework</strong></p>
+        <p>Desenvolvido e mantido por: <span id="authors-list"></span></p>
+        <p><small>Este documento segue as normas de versionamento e retenção lógica de tokens.</small></p>
+    </footer>
+</div>
+
+<script>
+    // Em um ambiente real no GitHub Pages, você faria um fetch('database.json')
+    // Aqui estamos simulando o JSON carregado na mesma página para o protótipo funcionar.
+    const database = {
+      "projectInfo": {
+        "title": "Otimização de Contexto em Engenharia",
+        "authors": ["Kelvin J Rocha", "Gemini Pro"]
+      },
+      "workflowSteps": [
+        {
+          "id": "step1",
+          "title": "1. Dimensionamento de Contexto",
+          "description": "Fragmentação da documentação bruta de engenharia em módulos lógicos (ex: Esquemas Elétricos vs. Segurança) para evitar saturação da janela de contexto e alucinações."
+        },
+        {
+          "id": "step2",
+          "title": "2. Compressão Semântica",
+          "description": "Redução do texto via IA para focar apenas em terminologia técnica densa, removendo linguagem passiva e adjetivos desnecessários. Redução de tokens."
+        },
+        {
+          "id": "step3",
+          "title": "3. Verificação Master Database",
+          "description": "Cruzamento do texto comprimido contra as normas vigentes. Ponto de checagem obrigatório para padrões técnicos de Eletrônica e Automação."
+        },
+        {
+          "id": "step4",
+          "title": "4. Auditoria Temp Zero",
+          "description": "Sessão limpa da IA (Temperatura = 0) operando como auditora restrita para detectar alucinações, vazamentos ou violações criadas na compressão."
+        },
+        {
+          "id": "step5",
+          "title": "5. Montagem Final",
+          "description": "Integração das peças verificadas no documento mestre com um prompt de baixo custo (low-token) apenas para garantir a coesão textual."
+        }
+      ],
+      "siteMap": [
+        { "name": "Início", "status": "ativo" },
+        { "name": "Fluxo de Trabalho", "status": "ativo" },
+        { "name": "Procedimentos Padronizados (POPs / SOPs)", "status": "em elaboração" },
+        { "name": "Área do Administrador", "status": "em elaboração" }
+      ]
+    };
+
+    // Renderizando os dados na tela
+    document.addEventListener("DOMContentLoaded", () => {
+        // Título e Autores
+        document.getElementById('page-title').innerText = database.projectInfo.title;
+        document.getElementById('authors-list').innerText = database.projectInfo.authors.join(' & ');
+
+        // Renderizar Mapa do Site
+        const sitemapContainer = document.getElementById('sitemap-container');
+        database.siteMap.forEach(item => {
+            const badgeClass = item.status === 'ativo' ? 'badge-active' : 'badge-wip';
+            const badgeText = item.status === 'ativo' ? 'Online' : 'Em elaboração';
+            
+            sitemapContainer.innerHTML += `
+                <div class="sitemap-item">
+                    ${item.name} <span class="badge ${badgeClass}">${badgeText}</span>
+                </div>
+            `;
+        });
+
+        // Renderizar Workflow
+        const workflowContainer = document.getElementById('workflow-container');
+        database.workflowSteps.forEach(step => {
+            workflowContainer.innerHTML += `
+                <div class="step-card">
+                    <h3>${step.title}</h3>
+                    <p>${step.description}</p>
+                </div>
+            `;
+        });
+    });
+</script>
+
+</body>
+</html>
