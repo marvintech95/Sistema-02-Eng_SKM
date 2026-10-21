@@ -1,0 +1,40 @@
+{
+  "projectInfo": {
+    "title": "AI-Human Collaboration: Engenharia de Prompt para Automação",
+    "version": "1.0-alpha",
+    "authors": ["Kelvin J Rocha", "Gemini Pro"]
+  },
+  "workflowSteps": [
+    {
+      "id": "step1",
+      "title": "Dimensionamento de Contexto",
+      "description": "Fragmentação da documentação bruta de engenharia em módulos lógicos (ex: Esquemas Elétricos vs. Segurança) para evitar saturação da janela de contexto."
+    },
+    {
+      "id": "step2",
+      "title": "Compressão Semântica (1ª Passagem)",
+      "description": "Redução do texto via LLM para focar apenas em terminologia técnica densa, removendo linguagem passiva e adjetivos desnecessários."
+    },
+    {
+      "id": "step3",
+      "title": "Verificação Master Database",
+      "description": "Cruzamento do texto comprimido contra as normas vigentes (ISO, NR-11, NR-12). Requer carregamento da Master Database de Eletrônica e Automação."
+    },
+    {
+      "id": "step4",
+      "title": "Auditoria de Temperatura Zero",
+      "description": "Sessão limpa da IA (Temp 0) para detectar alucinações, vazamentos de tokens e violações lógicas criadas na compressão."
+    },
+    {
+      "id": "step5",
+      "title": "Montagem Final",
+      "description": "Integração das peças verificadas no documento mestre com um prompt de baixo custo (low-token) apenas para coerência de leitura."
+    }
+  ],
+  "siteMap": [
+    { "name": "Início", "status": "ativo" },
+    { "name": "Fluxo de Trabalho", "status": "ativo" },
+    { "name": "Procedimentos Padronizados (POPs / SOPs)", "status": "em elaboração" },
+    { "name": "Área do Administrador", "status": "em elaboração" }
+  ]
+}
