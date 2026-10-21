@@ -1,40 +1,59 @@
 {
   "projectInfo": {
-    "title": "AI-Human Collaboration: Engenharia de Prompt para Automação",
-    "version": "1.0-alpha",
+    "title": "Otimização de Contexto em Engenharia",
     "authors": ["Kelvin J Rocha", "Gemini Pro"]
   },
-  "workflowSteps": [
-    {
-      "id": "step1",
-      "title": "Dimensionamento de Contexto",
-      "description": "Fragmentação da documentação bruta de engenharia em módulos lógicos (ex: Esquemas Elétricos vs. Segurança) para evitar saturação da janela de contexto."
-    },
-    {
-      "id": "step2",
-      "title": "Compressão Semântica (1ª Passagem)",
-      "description": "Redução do texto via LLM para focar apenas em terminologia técnica densa, removendo linguagem passiva e adjetivos desnecessários."
-    },
-    {
-      "id": "step3",
-      "title": "Verificação Master Database",
-      "description": "Cruzamento do texto comprimido contra as normas vigentes (ISO, NR-11, NR-12). Requer carregamento da Master Database de Eletrônica e Automação."
-    },
-    {
-      "id": "step4",
-      "title": "Auditoria de Temperatura Zero",
-      "description": "Sessão limpa da IA (Temp 0) para detectar alucinações, vazamentos de tokens e violações lógicas criadas na compressão."
-    },
-    {
-      "id": "step5",
-      "title": "Montagem Final",
-      "description": "Integração das peças verificadas no documento mestre com um prompt de baixo custo (low-token) apenas para coerência de leitura."
-    }
-  ],
   "siteMap": [
     { "name": "Início", "status": "ativo" },
     { "name": "Fluxo de Trabalho", "status": "ativo" },
     { "name": "Procedimentos Padronizados (POPs / SOPs)", "status": "em elaboração" },
     { "name": "Área do Administrador", "status": "em elaboração" }
+  ],
+  "outsourcingStrategies": [
+    {
+      "title": "Terceirização de OCR (PDFs e Imagens)",
+      "description": "Para evitar o consumo excessivo da janela de contexto da IA com descrições de layout e extrações imperfeitas, a tarefa bruta de reconhecimento óptico é completamente delegada a ferramentas externas de OCR antes do envio ao modelo. A IA recebe apenas os dados limpos."
+    },
+    {
+      "title": "Geração Externa de Documentos (Layout/PDF)",
+      "description": "O modelo foca unicamente na geração e revisão de textos e lógicas usando marcação leve (Markdown). A formatação final do documento é terceirizada usando processos manuais via markdowntopdf.com e fluxos automatizados via APITemplate.io/pdf-tools."
+    }
+  ],
+  "workflowSteps": [
+    { "title": "1. Dimensionamento de Contexto", "description": "Fragmentação da documentação em módulos lógicos." },
+    { "title": "2. Compressão Semântica", "description": "Remoção de linguagem passiva e adjetivos via IA, focando em terminologia técnica." },
+    { "title": "3. Verificação Master Database", "description": "Cruzamento das saídas comprimidas com as normas de engenharia vigentes." },
+    { "title": "4. Auditoria Temp Zero", "description": "Sessão limpa (Temperatura 0) operando como auditora restrita contra alucinações e vazamentos." },
+    { "title": "5. Montagem Final", "description": "Integração via prompt de baixo custo focado apenas na coesão textual." }
+  ],
+  "upgradeRoadmap": [
+    {
+      "phase": "Fase 1: Arquitetura e Redes",
+      "topics": "SYS-01, PROT-01, PROT-02",
+      "description": "Implementação de módulos interativos para checagem de Modelagem RDS (ISO/IEC 81346) e ferramentas de análise de determinismo e temporização de frames para redes Profibus, Modbus e OPC UA."
+    },
+    {
+      "phase": "Fase 2: Ecossistemas de Controle e Marítima",
+      "topics": "AUTO-01, MAR-01, CTRL-01",
+      "description": "Criação de diretórios de validação lógica IEC 61131-3 (Altus/Siemens), equações termodinâmicas (MVEM) para motores, e integração de POPs para auditar sistemas de governo (Lemes) contra normas IMO SOLAS."
+    },
+    {
+      "phase": "Fase 3: Instrumentação e Engenharia Reversa",
+      "topics": "ENG-01, INST-01, ANLG-01",
+      "description": "Formulação de checklists em Markdown para mitigação de histerese em transdutores, análise de circuitos de instrumentação analógica (TI Op Amps) e documentação base para simulação de scripts Node.js após sniffing de redes CAN."
+    }
+  ],
+  "trainingResources": [
+    { "title": "Análise de Dados: Claude vs ChatGPT", "focus": "Demonstra o manuseio de janelas de contexto massivas (até 200k tokens), essencial para processar manuais extensos de engenharia sem perder cláusulas iniciais de conformidade." },
+    { "title": "Comparando Modelos de IA Gratuitos", "focus": "Avalia a eficiência de tokens e retenção estrita de lógica em diferentes plataformas, ajudando a escolher o modelo certo para tarefas pesadas de auditoria." },
+    { "title": "Novos Recursos de Work & Workspace do ChatGPT", "focus": "Mostra como isolar ambientes para travar restrições rígidas de engenharia e regras de conformidade através de múltiplas sessões de prompts sem vazamento de tokens." },
+    { "title": "Usando o Canvas para Edição de Documentos", "focus": "Ensina a revisão colaborativa e direcionada. Permite atualizar parágrafos técnicos específicos sem regenerar o documento inteiro e desperdiçar tokens." },
+    { "title": "Claude e ChatGPT para Extração de Dados Complexos", "focus": "Focado em extrair dados estruturados de textos densos, vital ao isolar parâmetros de segurança de especificações não estruturadas." },
+    { "title": "IA para Programação: Retenção de Lógica e Sintaxe", "focus": "Embora foque em Python, a lição central é como os modelos mantêm lógica estrita em contextos profundos, aplicável a fórmulas complexas de engenharia." },
+    { "title": "Capacidades do Plano Gratuito do Grok", "focus": "Explora modelos alternativos para fluxos de re-checagem secundários, permitindo que uma IA com contexto limpo audite documentos sem atingir limites de uso do modelo principal." },
+    { "title": "Claude e ChatGPT no Excel", "focus": "Estruturação de checklists tabulares. Forçar a IA a formatar saídas em tabelas comprime naturalmente o texto, economizando tokens significativos." },
+    { "title": "Do Zero ao Avançado em Inteligência Artificial", "focus": "Estrutura de base para escrever prompts determinísticos e eficientes em tokens, que não deixam espaço para interpretações subjetivas." },
+    { "title": "Fundamentos da Engenharia de Prompt", "focus": "Técnicas essenciais para estruturar consultas para que a IA priorize a verificação de conformidade em vez de geração de linguagem criativa." },
+    { "title": "Curso Básico de ChatGPT - Inteligência Artificial", "focus": "Conceitos fundamentais sobre como estruturar prompts de IA eficientemente, o primeiro passo para dominar o gerenciamento de tokens em tarefas complexas." }
   ]
 }
